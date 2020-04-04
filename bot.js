@@ -22,12 +22,17 @@ client.on('message', async msg => {
 
     //listeners
     if (msg.content === `${prefix}listeners pls`) {
-        await funcs.getListeners().then((result) => msg.reply("📡 oio.radio has " + result + " listeners"))        
+        await funcs.getListeners().then((result) => {            
+            if (typeof result == "number")
+                msg.reply("📡 oio.radio has " + result + " listeners")
+            else
+                msg.reply(result)
+        })
     }
     
     //wisdom
     if (msg.content === `${prefix}give me some wisdom`) {
-        msg.reply(fortune.getFortune())
+        msg.reply("🧙‍♂️ "+fortune.getFortune())
     }
 
     //money

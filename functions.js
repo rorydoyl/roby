@@ -9,10 +9,10 @@ const fetchData = async () => {
 
 exports.getListeners = async () => {
     const $ = await fetchData()
-    let listeners = 0
+    let listeners = "🔇 oio.radio is off mate!"
     siteName = $('.streamstats').each(function( index ) {
         if (index === 1)
-            listeners = $( this ).text()
+            listeners = parseInt($( this ).text())
       })
     return listeners
 }
