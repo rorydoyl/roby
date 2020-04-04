@@ -16,31 +16,29 @@ client.on('message', async msg => {
     //help
     if (msg.content === `${prefix}help`) {
     msg.reply(
-        "`you can ask me: \n\n • roby listeners pls\n • roby what's up\n • roby give me some wisdom\n • roby give me some money\n • roby show me your lenny face`"
+        "```👉roby listeners pls\n👉roby what's up\n👉roby give me some wisdom\n👉roby give me some money\n👉roby show me your lenny face```"
     )
     }   
 
     //listeners
     if (msg.content === `${prefix}listeners pls`) {
-        await funcs.getListeners().then((result) => msg.reply("oio.radio has " + result + " listeners"))        
+        await funcs.getListeners().then((result) => msg.reply("📡 oio.radio has " + result + " listeners"))        
     }
     
     //wisdom
     if (msg.content === `${prefix}give me some wisdom`) {
-        await funcs.getListeners().then((result) => msg.reply(fortune.getFortune()))        
+        msg.reply(fortune.getFortune())
     }
 
     //money
     if (msg.content === `${prefix}give me some money`) {
-        let r = Math.floor(Math.random()*10000)
-        msg.reply("there you go, " + r + "$")
-        msg.reply("please send a picture of your credit card to receive them")
-        msg.reply("( ° ͜ʖ °)")
+        let r = (Math.random()*10).toFixed(4)
+        msg.reply("there you go, **" + r + " ฿ ** 💰 ")
     }
 
     //lenny face
     if (msg.content === `${prefix}show me your lenny face`) {        
-        msg.reply("( ° ͜ʖ °)")
+        msg.reply("`( ° ͜ʖ °)`")
     }
 
     // what's up
@@ -103,7 +101,7 @@ client.on('message', async msg => {
             "different day, same existence"
         ]
         let answer = answers[Math.floor(Math.random() * answers.length)]
-        msg.reply(answer)
+        msg.reply("👋 " + answer)
       }
   })
 
