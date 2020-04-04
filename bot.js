@@ -30,7 +30,7 @@ client.login(token)
 
 client.on('message', async msg => {
     if (msg.content === `${prefix}listeners pls`) {
-        await getListeners().then((result) => msg.reply("🤖 _oio.radio has " + result + " listeners._"))        
+        await getListeners().then((result) => msg.reply("oio.radio has " + result + " listeners"))        
     }
     if (msg.content === `${prefix}beep`) {
         msg.reply('bop')
