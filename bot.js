@@ -83,6 +83,14 @@ client.on('message', async msg => {
     if (msg.content === `beep`) {            
         msg.channel.send("🤖 bop")
     }
+
+    // thanks
+    if (msg.content === `thanks roby`) {            
+        msg.reply("you are welcome")
+    }    
+    if (msg.content === `thank you roby`) {            
+        msg.reply("you are welcome")
+    }
   })
 
 
