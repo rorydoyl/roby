@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const funcs = require("./functions.js")
-const fortune = require("./cookies.js")
+const cookies = require("./cookies.js")
 
 const { prefix, token } = require('./config.json')
 
@@ -15,99 +15,66 @@ client.on('message', async msg => {
     
     //help
     if (msg.content === `${prefix}help`) {
-    msg.reply(
-        "```👉roby listeners pls\n👉roby what's up\n👉roby give me some wisdom\n👉roby give me some money\n👉roby show me your lenny face```"
-    )
+    // msg.channel.send(
+    //     "\n\n\n** 🤖ROBY COMMANDS!**```👉roby listeners pls\n👉roby what's up\n👉roby give me some wisdom\n👉roby give me some money\n👉roby show me your lenny face```"
+    // )
+
+        const embed = new Discord.MessageEmbed()
+        // Set the title of the field
+        embed.setTitle('🤖  Roby ')        
+        embed.setColor(0x0000ff)
+        // Set the main content of the embed
+        embed.setDescription('Full command list');
+        embed.addField("📡 Radio Listeners","`roby listeners pls`",true) 
+        embed.addField("🧙‍♂️ Wisdom","`roby wisdom pls`",true) 
+        embed.addField("💰 Money","`roby money pls`",true) 
+        embed.addField("( ° ͜ʖ °)","`roby lenny face pls`",true) 
+        embed.addField("👋 Hey","`roby what's up`",true)         
+        embed.addField("🏓 Ping","`ping`",true)         
+        // Send the embed to the same channel as the message
+        msg.channel.send(embed);
     }   
 
     //listeners
     if (msg.content === `${prefix}listeners pls`) {
         await funcs.getListeners().then((result) => {            
             if (typeof result == "number")
-                msg.reply("📡 oio.radio has " + result + " listeners")
+                msg.channel.send("📡 oio.radio has " + result + " listeners")
             else
-                msg.reply(result)
+                msg.channel.send(result)
         })
     }
     
     //wisdom
-    if (msg.content === `${prefix}give me some wisdom`) {
-        msg.reply("🧙‍♂️ "+fortune.getFortune())
+    if (msg.content === `${prefix}wisdom pls`) {
+        msg.channel.send("🧙‍♂️ " + cookies.getFortune())
     }
 
     //money
-    if (msg.content === `${prefix}give me some money`) {
+    if (msg.content === `${prefix}money pls`) {
         let r = (Math.random()*10).toFixed(4)
-        msg.reply("there you go, **" + r + " ฿ ** 💰 ")
+        msg.channel.send("there you go, **" + r + " ฿ ** 💰 ")
     }
 
     //lenny face
-    if (msg.content === `${prefix}show me your lenny face`) {        
-        msg.reply("`( ° ͜ʖ °)`")
+    if (msg.content === `${prefix}lenny face pls`) {        
+        msg.channel.send("`( ° ͜ʖ °)`")
     }
 
     // what's up
-    if (msg.content === `${prefix}what's up`) {
-        const answers = [
-            'not too bad',
-            'not too shabby',
-            'all good',
-            "i'm fine",
-            'alright',
-            "i’m good",
-            "i’m fine",
-            "pretty goo",
-            "i’m well",
-            "i’m ok",
-            "not too bad",
-            "just the same old same ol",
-            "yeah, all right",
-            "i’m alive",
-            "very well, thank",
-            "i’m hanging in there",
-            "i’ve been better",
-            "nothing much",
-            "not a lot",
-            "nothing",
-            "oh, just the usual",
-            "oh gosh, all kinds of stuff",
-            "like you, but better",
-            "i could really go for a massage",
-            "much better now that you are with me",
-            "not so wel",
-            "so far, so good",
-            "i’m pretty standard right now",
-            "happy and content, thank you",
-            "going great. hope this status quo persists for rest of the day",
-            "well enough to chat with you if you wish to",
-            "i’m better than i was, but not nearly as good as i’m going to be",
-            "i think i’m doing ok. how do you think i’m doing",
-            "i am blessed",
-            "way better than i deserve",
-            "i have a pulse, so i must be okay",
-            "better than some, not as good as others",
-            "i’m doing really well",
-            "medium well",
-            "i would be lying if i said i’m fine",
-            "surviving, i guess",
-            "in need of some peace and quiet",
-            "horrible, now that i’ve met you",
-            "imagining myself having a fabulous vacation",
-            "i’m better on the inside than i look on the outsid",
-            "sunshine all day long",
-            "i’m not sure yet",
-            "i am high-quality",
-            "real terrible, thanks for asking",
-            "incredibly good looking",
-            "the best i can be. assuming you’re at your best too",
-            "i’m still sucking air",
-            "better than nothing",
-            "i’m vertical and breathing",
-            "different day, same existence"
-        ]
-        let answer = answers[Math.floor(Math.random() * answers.length)]
-        msg.reply("👋 " + answer)
+    if (msg.content === `${prefix}what's up`) {            
+        msg.channel.send("👋 " + msg.author.username + ", " + cookies.getCheers())
       }
+
+    // ping
+    if (msg.content === `ping`) {            
+        msg.channel.send("🏓 pong")
+    }
+
+    // beep
+    if (msg.content === `beep`) {            
+        msg.channel.send("🤖 bop")
+    }
   })
 
 
