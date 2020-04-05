@@ -3,7 +3,6 @@ const client = new Discord.Client()
 const funcs = require("./functions.js")
 const cookies = require("./cookies.js")
 
-
 const { prefix, token } = require('./config.json')
 
 client.login(token)
@@ -15,8 +14,11 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
     
+    const command = msg.content.toLowerCase()
+    // console.log(command.toLowerCase())
+
     //help
-    if (msg.content === `${prefix}help`) {
+    if (command === `${prefix}help`) {
     // msg.channel.send(
     //     "\n\n\n** 🤖ROBY COMMANDS!**```👉roby listeners pls\n👉roby what's up\n👉roby give me some wisdom\n👉roby give me some money\n👉roby show me your lenny face```"
     // )
@@ -38,7 +40,7 @@ client.on('message', async msg => {
     }   
 
     //listeners
-    if (msg.content === `${prefix}listeners pls`) {
+    if (command === `${prefix}listeners pls`) {
         await funcs.getListeners().then((result) => {            
             if (typeof result == "number")
                 msg.channel.send("📡 oio.radio has " + result + " listeners")
@@ -48,12 +50,12 @@ client.on('message', async msg => {
     }
     
     //wisdom
-    if (msg.content === `${prefix}wisdom pls`) {
+    if (command === `${prefix}wisdom pls`) {
         msg.channel.send("🧙‍♂️ " + cookies.getFortune())
     }
 
     //money
-    if (msg.content === `${prefix}btc pls`) {
+    if (command === `${prefix}btc pls`) {
         await funcs.getBTC().then((result) => {           
             let str = result.toFixed(2)+"$" 
             msg.channel.send(" 1 BTC = **" + str +"**")
@@ -65,30 +67,30 @@ client.on('message', async msg => {
     }
 
     //lenny face
-    if (msg.content === `${prefix}lenny face pls`) {        
+    if (command === `${prefix}lenny face pls`) {        
         msg.channel.send("`( ° ͜ʖ °)`")
     }
 
     // what's up
-    if (msg.content === `${prefix}what's up`) {            
+    if (command === `${prefix}what's up` || command === `${prefix}what’s up`) {            
         msg.channel.send("👋 " + msg.author.username + ", " + cookies.getCheers())
       }
 
     // ping
-    if (msg.content === `ping`) {            
+    if (command === `ping`) {            
         msg.channel.send("🏓 pong")
     }
 
     // beep
-    if (msg.content === `beep`) {            
+    if (command === `beep`) {            
         msg.channel.send("🤖 bop")
     }
 
     // thanks
-    if (msg.content === `thanks roby`) {            
+    if (command === `thanks roby`) {            
         msg.reply("you are welcome")
     }    
-    if (msg.content === `thank you roby`) {            
+    if (command === `thank you roby`) {            
         msg.reply("you are welcome")
     }
   })
