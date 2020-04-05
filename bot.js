@@ -3,9 +3,11 @@ const client = new Discord.Client()
 const funcs = require("./functions.js")
 const cookies = require("./cookies.js")
 
+
 const { prefix, token } = require('./config.json')
 
 client.login(token)
+ 
 
 client.on('ready', () => {    
     console.log(`Logged in as ${client.user.tag}!`)    
@@ -27,7 +29,7 @@ client.on('message', async msg => {
         embed.setDescription('Full command list');
         embed.addField("📡 Radio Listeners","`roby listeners pls`",true) 
         embed.addField("🧙‍♂️ Wisdom","`roby wisdom pls`",true) 
-        embed.addField("💰 Money","`roby money pls`",true) 
+        embed.addField("💰 BTC","`roby btc pls`",true) 
         embed.addField("( ° ͜ʖ °)","`roby lenny face pls`",true) 
         embed.addField("👋 Hey","`roby what's up`",true)         
         embed.addField("🏓 Ping","`ping`",true)         
@@ -51,9 +53,15 @@ client.on('message', async msg => {
     }
 
     //money
-    if (msg.content === `${prefix}money pls`) {
-        let r = (Math.random()*10).toFixed(4)
-        msg.channel.send("there you go, **" + r + " ฿ ** 💰 ")
+    if (msg.content === `${prefix}btc pls`) {
+        await funcs.getBTC().then((result) => {           
+            let str = result.toFixed(2)+"$" 
+            msg.channel.send(" 1 BTC = **" + str +"**")
+            // if (result > 11000)
+            //     msg.channel.send("sell!")
+            // else
+            //     msg.channel.send("buy!")
+        })
     }
 
     //lenny face
