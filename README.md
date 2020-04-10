@@ -1,6 +1,6 @@
 # 🤖 roby
 
-The friendly helper bot from the [oio.studio](https://oio.studio) discord server.
+The friendly helper bot from the [oio](https://oio.studio) discord server.
 
 ## Features
       
