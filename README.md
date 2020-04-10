@@ -7,13 +7,13 @@ The friendly helper bot from the oio discord server.
 
 |Command   | Feature  |
 |----------|----------|
-|  roby listeners pls | fetch the current listeners for oio.radio  |
-| roby wisdom pls  | replies with a random fortune  |
-| roby btc pls  | gets current BTC value in $  |
-|  roby lenny face pls | ( ° ͜ʖ °)  |
-| roby what's up  | gets a random answer  |
-|  ping |  pong |
-| thanks roby | just thank roby  |
+|  `roby listeners pls` | fetch the current listeners for oio.radio  |
+| `roby wisdom pls`  | replies with a random fortune  |
+| `roby btc pls`  | gets current BTC value in $  |
+|  `roby lenny face pls` | ( ° ͜ʖ °)  |
+| `roby what's up`  | gets a random answer  |
+|  `ping` |  pong |
+| `thanks roby` | just thank roby  |
 
 
 ### Submit new features
