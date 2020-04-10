@@ -1,4 +1,4 @@
-# `🤖 roby `
+# 🤖 roby
 
 The friendly helper bot from the oio discord server.
 
