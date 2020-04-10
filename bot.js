@@ -3,6 +3,7 @@ const client = new Discord.Client()
 const funcs = require("./functions.js")
 const cookies = require("./cookies.js")
 
+//ask @matlo for the config.json file
 const { prefix, token } = require('./config.json')
 
 client.login(token)
