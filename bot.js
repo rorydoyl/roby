@@ -5,9 +5,7 @@ const cookies = require("./cookies.js")
 
 //ask @matlo for the config.json file
 const { prefix, token } = require('./config.json')
-
 client.login(token)
- 
 
 client.on('ready', () => {    
     console.log(`Logged in as ${client.user.tag}!`)    
@@ -15,18 +13,16 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
     
-    const command = msg.content.toLowerCase()
-    // console.log(command.toLowerCase())
+    // so it's case agnostic
+    const command = msg.content.toLowerCase()    
 
     //help
-    if (command === `${prefix}help`) {
-    // msg.channel.send(
-    //     "\n\n\n** 🤖ROBY COMMANDS!**```👉roby listeners pls\n👉roby what's up\n👉roby give me some wisdom\n👉roby give me some money\n👉roby show me your lenny face```"
-    // )
+    if (command === `${prefix}help`) {    
 
         const embed = new Discord.MessageEmbed()
         // Set the title of the field
-        embed.setTitle('🤖  Roby ')        
+        embed.setTitle('🤖  Roby ') 
+        // color of the sidebar       
         embed.setColor(0x0000ff)
         // Set the main content of the embed
         embed.setDescription('Full command list');
@@ -40,7 +36,7 @@ client.on('message', async msg => {
         msg.channel.send(embed);
     }   
 
-    //listeners
+    // oio radio listeners
     if (command === `${prefix}listeners pls`) {
         await funcs.getListeners().then((result) => {            
             if (typeof result == "number")
@@ -50,24 +46,20 @@ client.on('message', async msg => {
         })
     }
     
-    //wisdom
+    // wisdom
     if (command === `${prefix}wisdom pls`) {
         msg.channel.send("🧙‍♂️ " + cookies.getFortune())
     }
 
-    //money
+    // BTC value
     if (command === `${prefix}btc pls`) {
         await funcs.getBTC().then((result) => {           
             let str = result.toFixed(2)+"$" 
-            msg.channel.send(" 1 BTC = **" + str +"**")
-            // if (result > 11000)
-            //     msg.channel.send("sell!")
-            // else
-            //     msg.channel.send("buy!")
+            msg.channel.send(" 1 BTC = **" + str +"**")        
         })
     }
 
-    //lenny face
+    // lenny face
     if (command === `${prefix}lenny face pls`) {        
         msg.channel.send("`( ° ͜ʖ °)`")
     }
