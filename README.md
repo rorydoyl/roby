@@ -19,13 +19,16 @@ The friendly helper bot from the oio discord server.
 ### Submit new features
 
 You can use the handy [GitHub Projects section](https://github.com/oiostudio/roby/projects/1) in this repo to ask for new features to be implemented.
+
 You can also discuss them directly in the `#roby` channel on the server.
 
 ## Developers
 
 ### No config.json ? 🕵️‍♀️
 
-This public repo is missing `config.json`, which contains the oauth token, which is required to start developing roby. You can get a copy by asking `@matlo` on the server.
+This public repo is missing `config.json`, which contains the oauth token, which is required to start developing roby. 
+
+You can get a copy by asking `@matlo` on the server.
 
 ### Install
 
