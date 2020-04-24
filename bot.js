@@ -68,6 +68,11 @@ client.on('message', async msg => {
     if (command === `${prefix}what's up` || command === `${prefix}what’s up`) {            
         msg.channel.send("👋 " + msg.author.username + ", " + cookies.getCheers())
       }
+    
+    // real?
+    if (command === `${prefix}are you real?`) {
+        msg.channel.send("idk, are you real?")
+      }
 
     // ping
     if (command === `ping`) {            
