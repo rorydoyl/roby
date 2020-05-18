@@ -18,8 +18,7 @@ The friendly helper bot from the [oio](https://oio.studio) discord server.
 
 ### Submit new features
 
-You can use the handy [GitHub Projects section](https://github.com/oiostudio/roby/projects/1) in this repo to ask for new features to be implemented.
-You can also discuss them directly in the `#roby` channel on the server.
+New features can be discussed in the `#roby` channel on the server.
 
 ## Developers
 
