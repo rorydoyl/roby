@@ -31,7 +31,8 @@ client.on('message', async msg => {
         embed.addField("💰 BTC","`roby btc pls`",true) 
         embed.addField("( ° ͜ʖ °)","`roby lenny face pls`",true) 
         embed.addField("👋 Hey","`roby what's up`",true)         
-        embed.addField("🏓 Ping","`ping`",true)         
+        embed.addField("🏓 Ping","`ping`",true)
+        embed.addField("🧙‍♂️ Random Poem","`roby poem pls`",true);         
         // Send the embed to the same channel as the message
         msg.channel.send(embed);
     }   
@@ -82,6 +83,12 @@ client.on('message', async msg => {
     // beep
     if (command === `beep`) {            
         msg.channel.send("🤖 bop")
+    }
+
+    // poem
+    // lenny face
+    if (command === `${prefix}poem pls`) {        
+        msg.channel.send( await func.getRandomPoem() );
     }
 
     // thanks

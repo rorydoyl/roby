@@ -3,6 +3,8 @@ const cheerio = require("cheerio")
 const siteUrl = "https://stream.oio.radio/"
 let price = require('crypto-price')
 
+const randomPoemUrl = "https://tofu.wtf/poems/api/random";
+
 const fetchData = async () => {
     const result = await axios.get(siteUrl)
     return cheerio.load(result.data)
@@ -26,3 +28,15 @@ exports.getListeners = async () => {
       })
     return listeners
 }
+
+exports.getRandomPoem = async () => {
+    try {
+        const response = await axios.get( randomPoemUrl );
+        return response.data.content;
+    }
+    catch (_) {
+        return "😢 sorry, no poem 😢"
+    }
+}
+
+
