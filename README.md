@@ -1,5 +1,7 @@
 # 🤖 roby
 
+<!-- ![roby](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1") -->
+
 The friendly helper bot from the [oio](https://oio.studio) discord server.
 
 ## Features
