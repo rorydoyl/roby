@@ -132,8 +132,7 @@ async function pierre() {
     const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
     const rows = await sheet.getRows(); // can pass in { limit, offset }
     
-    const channel = client.channels.cache.find(channel => channel.name === 'gayup')    
-    // const channel = client.channels.cache.find(channel => channel.name === '🤖bots')    
+    const channel = client.channels.cache.find(channel => channel.name === '🔥cool-stuff')    
 
     const embed = new Discord.MessageEmbed()
     // Set the title of the field
