@@ -2,9 +2,30 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const funcs = require("./functions.js")
 const cookies = require("./cookies.js")
+const { GoogleSpreadsheet } = require('google-spreadsheet')
+
+var express = require("express");
+var app = express();
+
+app.listen(3344, () => {
+    console.log("Server running on port 3344");
+   });
+
+app.get("/roby", (req, res, next) => {
+    res.send("<h1>ciao pierre!</h1>")
+    pierre()
+});
+
+// used to read google spreadsheet
+// https://theoephraim.github.io/node-google-spreadsheet/
+const creds = require('./secrets/roby-google-key.json') 
+const doc = new GoogleSpreadsheet('1ek6o7DY5m-4yxdkA8RQJNPY2n-0T1TR7BbP1i23zirQ')
+
+// pierre()
+
 
 //ask @matlo for the config.json file
-const { prefix, token } = require('./config.json')
+const { prefix, token } = require('./secrets/config.json')
 client.login(token)
 
 client.on('ready', () => {    
@@ -101,3 +122,47 @@ client.on('message', async msg => {
   })
 
 
+
+
+///// FUNCTIONS
+
+async function pierre() {
+    await doc.useServiceAccountAuth(creds)
+    await doc.loadInfo(); 
+    const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id]
+    const rows = await sheet.getRows(); // can pass in { limit, offset }
+    
+    const channel = client.channels.cache.find(channel => channel.name === 'gayup')    
+    // const channel = client.channels.cache.find(channel => channel.name === '🤖bots')    
+
+    const embed = new Discord.MessageEmbed()
+    // Set the title of the field
+    embed.setTitle("🗞 New Pierre's Newsletter! ") 
+    embed.setDescription("Your weekly digest of cool stuff") 
+    
+    // color of the sidebar       
+    embed.setColor(0x7FFFD4)             
+
+    let testa = "_  _"
+    let corpo = "_  _"
+    embed.addField("_  _", "_  _" ,false)             
+    rows.map((row, i) => {
+        if (row.header !== undefined && row.header !== "") {                        
+            if (i !== 0) {
+                corpo += "\n _  _ \n"
+                embed.addField(funcs.posterize(testa), corpo ,false)             
+            }
+            testa = row.header            
+            corpo = ""
+        } else {   
+            s = "[🔸 "+row.text+"]("+row.link+") \n"
+            corpo += s            
+        }
+    })    
+
+    embed.addField("To get Pierre's Newsletter in your inbox ", "[👉 SUBSCRIBE HERE](http://eepurl.com/gdPSM1)" ,false)     
+    embed.addField("_  _", "_  _" ,false)             
+    embed.addField("_Thank you Pierre!_", "_  _" ,false)             
+
+    channel.send(embed)        
+}

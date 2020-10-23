@@ -8,12 +8,15 @@
     "start": "node bot.js"
   },
   "author": "matlo",
-  "license": "UNLICENSED",
+  "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
     "crypto-price": "0.0.6",
-    "discord.js": "^12.1.1",
-    "dotenv": "^8.2.0"
-  }
+    "discord.js": "^12.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "google-spreadsheet": "^3.0.13"
+  },
+  "repository": "git@github.com:oiostudio/roby.git"
 }
