@@ -73,6 +73,11 @@ client.on('message', async msg => {
         msg.channel.send("🧙‍♂️ " + cookies.getFortune())
     }
 
+    // feedback wdyt
+    if (command === `${prefix}wdyt`) {
+        msg.channel.send(cookies.getFeedback())
+    }
+
     // BTC value
     if (command === `${prefix}btc pls`) {
         await funcs.getBTC().then((result) => {           

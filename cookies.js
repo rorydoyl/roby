@@ -1246,7 +1246,23 @@ fortunes = [
     "i’m vertical and breathing",
     "different day, same existence"
 ]
+
+const feedback = [
+  "that sucks",
+  "it's great!",
+  "good idea!",
+  "i'm not sure",
+  "i wouldn't be so enthusiastic about it",  
+  "forget it",
+  "it's the best thing i've ever seen",
+  "sick",
+  "no",
+  "what?",
+  "i can't think",
+  'more "tangible" '
+]
  
 
- exports.getFortune = () => fortunes[Math.floor(Math.random() * fortunes.length)];
- exports.getCheers = () => cheers[Math.floor(Math.random() * cheers.length)];
+ exports.getFortune = () => fortunes[Math.floor(Math.random() * fortunes.length)]
+ exports.getFeedback = () => feedback[Math.floor(Math.random() * feedback.length)];
+ exports.getCheers = () => cheers[Math.floor(Math.random() * cheers.length)]
