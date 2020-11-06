@@ -108,7 +108,9 @@ client.on('message', async msg => {
 
     // pong
     if (command === `pong`) {            
-        msg.channel.send("🏓 ping")
+        msg.channel.send("🤖 can't compute")
+        msg.channel.send("*[fatal error - roby is restarting]*")
+        msg.channel.send("...")
     }
 
     // beep
