@@ -106,6 +106,11 @@ client.on('message', async msg => {
         msg.channel.send("🏓 pong")
     }
 
+    // pong
+    if (command === `pong`) {            
+        msg.channel.send("🏓 ping")
+    }
+
     // beep
     if (command === `beep`) {            
         msg.channel.send("🤖 bop")
