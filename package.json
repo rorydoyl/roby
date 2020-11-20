@@ -16,7 +16,8 @@
     "discord.js": "^12.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "google-spreadsheet": "^3.0.13"
+    "google-spreadsheet": "^3.0.13",
+    "user-instagram": "^2.1.8"
   },
   "repository": "git@github.com:oiostudio/roby.git"
 }

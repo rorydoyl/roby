@@ -16,6 +16,11 @@ app.get("/roby", (req, res, next) => {
     pierre()
 });
 
+app.get("/insta", (req, res, next) => {
+    res.send("<h1>🤖 on it!</h1>")
+    insta()
+});
+
 // used to read google spreadsheet
 // https://theoephraim.github.io/node-google-spreadsheet/
 const creds = require('./secrets/roby-google-key.json') 
@@ -118,6 +123,11 @@ client.on('message', async msg => {
         msg.channel.send("🤖 bop")
     }
 
+    // bop
+    if (command === `bop`) {            
+        msg.channel.send("what?")
+    }
+
     // poem
     // lenny face
     if (command === `${prefix}poem pls`) {        
@@ -176,4 +186,18 @@ async function pierre() {
     embed.addField("_Thank you Pierre!_", "_  _" ,false)             
 
     channel.send(embed)        
+}
+
+async function insta () {
+    // console.log("xcc")    
+    await funcs.insta().then((post) => {
+        const channel = client.channels.cache.find(channel => channel.name === '🤖bots')    
+        channel.send("✨ I just did an instagram post, check it out")        
+        channel.send("👉 "+post.url)        
+        channel.send("------------------------------")                
+        channel.send("_ " + post.caption + " _", {files: [post.imageUrl]})        
+        // channel.send("Do you like this image?", {files: [post.imageUrl]});
+        // channel.send(post.url) 
+        // console.log(result)
+    })
 }

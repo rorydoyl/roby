@@ -1,6 +1,7 @@
 const axios = require("axios")
 const cheerio = require("cheerio")
-const siteUrl = "https://stream.oio.radio/"
+const userInstagram = require("user-instagram")
+
 let price = require('crypto-price')
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 
@@ -11,8 +12,8 @@ const randomPoemUrl = "https://tofu.wtf/poems/api/random";
 const creds = require('./secrets/roby-google-key.json') 
 const doc = new GoogleSpreadsheet('1ek6o7DY5m-4yxdkA8RQJNPY2n-0T1TR7BbP1i23zirQ')
 
-const fetchData = async () => {
-    const result = await axios.get(siteUrl)
+const fetchData = async (site) => {
+    const result = await axios.get(site)
     return cheerio.load(result.data)
 }
 
@@ -26,13 +27,25 @@ exports.getBTC = async () => {
 }
 
 exports.getListeners = async () => {
-    const $ = await fetchData()
+    const www = "https://stream.oio.radio/"
+    const $ = await fetchData(www)
     let listeners = "🔇 oio.radio is off mate!"
-    siteName = $('.streamstats').each(function( index ) {
+    $('.streamstats').each(function( index ) {
         if (index === 1)
             listeners = parseInt($( this ).text())
-      })
+    })
     return listeners
+}
+
+exports.insta = async () => {    
+  // Gets informations about a user  
+  const post = await userInstagram('roby.oio') // Same as getUserData()  
+  .then(res => {    
+    console.log(res.posts[0])
+    return res.posts[0]
+  })
+  .catch(console.error);
+  return post  
 }
 
 exports.getRandomPoem = async () => {
