@@ -40,8 +40,7 @@ exports.getListeners = async () => {
 exports.insta = async () => {    
   // Gets informations about a user  
   const url = await userInstagram('roby.oio') // Same as getUserData()  
-  .then(res => {    
-    console.log(res.posts[0])
+  .then(res => {        
     return res.posts[0]
   })
   .catch(console.error);
