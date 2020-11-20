@@ -188,16 +188,21 @@ async function pierre() {
     channel.send(embed)        
 }
 
-async function insta () {
-    // console.log("xcc")    
-    await funcs.insta().then((post) => {
+async function insta () {      
+    // await funcs.insta().then((post) => {
+    //     const channel = client.channels.cache.find(channel => channel.name === '🤖bots')    
+    //     channel.send("✨ I just did an instagram post, check it out")        
+    //     channel.send("👉 "+post.url)        
+    //     channel.send("------------------------------")                
+    //     channel.send("_ " + post.caption + " _", {files: [post.imageUrl]})                
+    // })
+    // await funcs.insta()
+
+    funcs.insta().then(url => {
         const channel = client.channels.cache.find(channel => channel.name === '🤖bots')    
-        channel.send("✨ I just did an instagram post, check it out")        
-        channel.send("👉 "+post.url)        
-        channel.send("------------------------------")                
-        channel.send("_ " + post.caption + " _", {files: [post.imageUrl]})        
-        // channel.send("Do you like this image?", {files: [post.imageUrl]});
-        // channel.send(post.url) 
-        // console.log(result)
-    })
+        channel.send("✨ I just posted on Instagram, check it out!")        
+        channel.send("👉 "+url)        
+        // channel.send("------------------------------")                
+        // channel.send("_ " + post.caption + " _", {files: [post.imageUrl]})                
+    }).catch(console.error);
 }

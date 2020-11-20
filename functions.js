@@ -1,5 +1,7 @@
 const axios = require("axios")
 const cheerio = require("cheerio")
+const puppeteer = require('puppeteer')
+
 const userInstagram = require("user-instagram")
 
 let price = require('crypto-price')
@@ -37,15 +39,38 @@ exports.getListeners = async () => {
     return listeners
 }
 
-exports.insta = async () => {    
+exports.insta = () => {    
+  return new Promise(async (resolve, reject) => {
   // Gets informations about a user  
-  const post = await userInstagram('roby.oio') // Same as getUserData()  
-  .then(res => {    
-    console.log(res.posts[0])
-    return res.posts[0]
+  // const post = await userInstagram('roby.oio') // Same as getUserData()  
+  // .then(res => {    
+  //   console.log(res.posts[0])
+  //   return res.posts[0]
+  // })
+  // .catch(console.error);
+  // return post      
+    try {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto("https://instagram.com/roby.oio");
+        let post = await page.evaluate(() => {                        
+            let posturl = document.getElementsByTagName("article")[0].children[0].querySelector("a").getAttribute("href")
+            // let items = document.querySelectorAll('article');
+            // items.forEach((item) => {
+            //     results.push({
+            //         url:  item.getAttribute('href'),
+            //         text: item.innerText,
+            //     });
+            // });        
+            const fullUrl = "https://instagram.com" + posturl               
+            return fullUrl
+        })
+        browser.close();
+        return resolve(post);
+    } catch (e) {
+        return reject(e);
+    }
   })
-  .catch(console.error);
-  return post  
 }
 
 exports.getRandomPoem = async () => {
