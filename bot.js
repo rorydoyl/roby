@@ -55,6 +55,7 @@ client.on('message', async msg => {
         embed.addField("📡 Radio Listeners","`roby listeners pls`",true) 
         embed.addField("🧙‍♂️ Wisdom","`roby wisdom pls`",true) 
         embed.addField("💰 BTC","`roby btc pls`",true) 
+        embed.addField("💰 DOT","`roby polka pls`",true) 
         embed.addField("( ° ͜ʖ °)","`roby lenny face pls`",true) 
         embed.addField("👋 Hey","`roby what's up`",true)         
         embed.addField("🏓 Ping","`ping`",true)
@@ -88,6 +89,14 @@ client.on('message', async msg => {
         await funcs.getBTC().then((result) => {           
             let str = result.toFixed(2)+"$" 
             msg.channel.send(" 1 BTC = **" + str +"**")        
+        })
+    }
+
+    // BTC value
+    if (command === `${prefix}polka pls`) {
+        await funcs.getDOT().then((result) => {           
+            let str = result.toFixed(2)+"$" 
+            msg.channel.send(" 1 DOT = **" + str +"**")        
         })
     }
 

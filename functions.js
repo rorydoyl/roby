@@ -26,6 +26,15 @@ exports.getBTC = async () => {
     return btc
 }
 
+exports.getDOT = async () => {
+  const dot = await price.getCryptoPrice("USD", "DOT").then(obj => {         
+      return parseFloat(obj.price)        
+  }).catch(err => {
+      console.log(err)
+  })      
+  return dot
+}
+
 exports.getListeners = async () => {
     const www = "https://stream.oio.radio/"
     const $ = await fetchData(www)
