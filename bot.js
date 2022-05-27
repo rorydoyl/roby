@@ -48,14 +48,14 @@ client.on("message", async (msg) => {
 	if (command === `${prefix}help` || command ===  `${prefix}help pls`) {
 		const embed = new Discord.MessageEmbed()
 		// Set the title of the field
-		embed.setTitle("🤖  roby ")
+		embed.setTitle("🤖  Roby ")
 		// color of the sidebar
 		embed.setColor(0x0000ff)
 		// Set the main content of the embed
 		embed.setDescription("Full command list")
-		embed.addField("📡 Radio Listeners", "`roby listeners pls`", true)
+		embed.addField("📡 Radio listeners", "`roby listeners pls`", true)
 		embed.addField("🧙‍♂️ Wisdom", "`roby wisdom pls`", true)
-		embed.addField("🍶 Random Haiku", "`roby haiku pls`", true)
+		embed.addField("🍶 Random haiku", "`roby haiku pls`", true)
 		embed.addField("💰 Cryptos", "`roby btc pls` `roby eth pls` `roby dot pls` `roby luna pls`", true)
 		/* embed.addField("💰 ETH", "`roby eth pls` ", true)
 		embed.addField("💰 DOT", "`roby dot pls`", true)
