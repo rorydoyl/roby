@@ -1,5 +1,5 @@
 const axios = require("axios")
-const haikus = require("./haikus.js")
+//const haikus = require("./haikus.js")
 const cheerio = require("cheerio")
 const userInstagram = require("user-instagram")
 
@@ -79,11 +79,14 @@ try {
 
 exports.getRandomHaiku = async () => {
 	try {
-		return haikus.getHaiku()
+		//return haikus.getHaiku()
+		let response = await axios.get('https://roby.live/api/random-haiku')
+		return response.data.text
 	} catch (_) {
 		return "😢 sorry, no haiku 😢"
 	}
 }
+
 
 
 exports.posterize = (wordLetters) => {
