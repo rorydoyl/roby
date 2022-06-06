@@ -87,7 +87,32 @@ exports.getRandomHaiku = async () => {
 	}
 }
 
+exports.getRandomCheer = async () => {
+	try {
+		const response = await axios.get('https://roby.live/api/random-cheer')
+		return response.data.text
+	} catch (_) {
+		return "i'm not working very well"
+	}
+}
 
+exports.getRandomFeedback = async () => {
+	try {
+		const response = await axios.get('https://roby.live/api/random-feedback')
+		return response.data.text
+	} catch (_) {
+		return "i'm not working very well"
+	}
+}
+
+exports.getRandomFortune = async () => {
+	try {
+		const response = await axios.get('https://roby.live/api/random-fortune')
+		return response.data.text
+	} catch (_) {
+		return "i'm not working very well"
+	}
+}
 
 exports.posterize = (wordLetters) => {
 	let num = /([0-9])/

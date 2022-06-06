@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const client = new Discord.Client()
 const funcs = require("./functions.js")
-const cookies = require("./cookies.js")
+//const cookies = require("./cookies.js")
 //const haikuList = require("./haikus.js")
 const { GoogleSpreadsheet } = require("google-spreadsheet")
 
@@ -83,12 +83,14 @@ client.on("message", async (msg) => {
 
 	// wisdom
 	if (command === `${prefix}wisdom pls`) {
-		msg.channel.send("🧙‍♂️ " + cookies.getFortune())
+		let result = await funcs.getRandomFortune()
+		msg.channel.send("🧙‍♂️ " + result)
 	}
 
 	// feedback wdyt
 	if (command === `${prefix}wdyt`) {
-		msg.channel.send(cookies.getFeedback())
+		let result = await funcs.getRandomFeedback()
+		msg.channel.send(result)
 	}
 
 	// Website Stats
@@ -189,7 +191,8 @@ client.on("message", async (msg) => {
 
 	// what's up
 	if (command === `${prefix}what's up` || command === `${prefix}what’s up`) {
-		msg.channel.send("👋 " + msg.author.username + ", " + cookies.getCheers())
+		let result = await funcs.getRandomCheer()
+		msg.channel.send("👋 " + msg.author.username + ", " + result)
 	}
 
 	// real?
