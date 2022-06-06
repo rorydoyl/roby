@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const client = new Discord.Client()
 const funcs = require("./functions.js")
 const cookies = require("./cookies.js")
-const haikuList = require("./haikus.js")
+//const haikuList = require("./haikus.js")
 const { GoogleSpreadsheet } = require("google-spreadsheet")
 
 var express = require("express")
