@@ -80,7 +80,6 @@ client.on('message', async (msg) => {
 		embed.addField("🍬 Pokémon", "`roby pokemon pls`", true)
 		embed.addField("🪙 Coin toss", "`roby coin pls`", true)
 		embed.addField("🎲 Dice throw", "`roby dice pls`", true)
-		embed.addField("📢 Shout something", "`roby shout [text]`", true)
 		/* embed.addField("( ° ͜ʖ °)", "`roby lenny face pls`", true) */
 		embed.addField("👋 Hey", "`roby what's up`", true)
 		embed.addField("🏓 Ping", "`ping`", true)
