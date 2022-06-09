@@ -188,7 +188,7 @@ client.on('message', async (msg) => {
 	// shout
 	if (command.startsWith(`${prefix}shout`)) {
 		let user = msg.author.username
-		let letters = command.substring(12, command.length)
+		let letters = command.substring(11, command.length)
 		let res = await funcs.shout(letters)
 		msg.channel.send(res)
 
