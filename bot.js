@@ -247,7 +247,7 @@ client.on('message', async (msg) => {
 
 	// beep
 	if (command === `beep`) {
-		msg.channel.send("🤖 blop")
+		msg.channel.send("🤖 bop")
 	}
 
 	// bop
