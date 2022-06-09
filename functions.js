@@ -59,13 +59,13 @@ exports.getListeners = async () => {
 }
 
 exports.insta = async () => {
-	// Gets informations about a user
-	const url = await userInstagram("roby.oio") // Same as getUserData()
-		.then((res) => {
-			return res.posts[0]
-		})
-		.catch(console.error)
-	return url
+	try {
+		//return haikus.getHaiku()
+		let response = await axios.get('https://roby.live/api/last-ig')
+		return response.data
+	} catch (_) {
+		return null
+	}
 }
 
 exports.getRandomPoem = async () => {
@@ -114,7 +114,7 @@ exports.getRandomFortune = async () => {
 	}
 }
 
-exports.posterize = (wordLetters) => {
+exports.shout = (wordLetters) => {
 	let num = /([0-9])/
 	let alph = /([a-z])/
 	let string = []
@@ -134,7 +134,7 @@ exports.posterize = (wordLetters) => {
 			}
 		})
 	})
-	return string.join("")
+	return string.join('')
 }
 
 exports.getStats = async (domain) => {

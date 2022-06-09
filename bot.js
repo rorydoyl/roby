@@ -17,9 +17,26 @@ app.get("/roby", (req, res, next) => {
 	pierre()
 })
 
-app.get("/insta", (req, res, next) => {
+app.get("/insta", async (req, res, next) => {
 	res.send("<h1>🤖 on it!</h1>")
-	insta()
+	let data = await funcs.insta()
+	
+	let embeddedMsg = new Discord.MessageEmbed()
+	embeddedMsg.setColor('#0099ff')
+	embeddedMsg.setTitle('Roby\'s post')
+	embeddedMsg.setURL(`https://www.instagram.com/p/${data.shortCode}`)
+	embeddedMsg.setAuthor(
+		'roby.oio', 
+		'https://instagram.ftrn4-1.fna.fbcdn.net/v/t51.2885-19/125839989_4594565063950689_7275292153696066648_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.ftrn4-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=Cp1ebXukLqYAX_0xN0S&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AT9D6EHzVTadb162IJkumlPf6N1A6RuhKkZ2D9eY88VYyQ&oe=62A55BAC&_nc_sid=8fd12b.png', 
+		'https://www.instagram.com/roby.oio/'
+	)
+	embeddedMsg.setDescription(data.description)
+	embeddedMsg.setImage(data.imgUrl)
+		//.setTimestamp()
+
+	client.channels.fetch('978960191934590976')
+		//.then(channel => channel.send(`🤖 Hey!\nWe just posted something new on IG, check it out!\n${post.url}\n${post.imageUrl}`))
+		.then(channel => channel.send(embeddedMsg))
 })
 
 // used to read google spreadsheet
@@ -36,11 +53,11 @@ const { prefix, token, cryptoken} = require("./secrets/config.json")
 
 client.login(token)
 
-client.on("ready", () => {
+client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`)
 })
 
-client.on("message", async (msg) => {
+client.on('message', async (msg) => {
 	// so it's case agnostic
 	const command = msg.content.toLowerCase()
 
@@ -63,6 +80,7 @@ client.on("message", async (msg) => {
 		embed.addField("🍬 Pokémon", "`roby pokemon pls`", true)
 		embed.addField("🪙 Coin toss", "`roby coin pls`", true)
 		embed.addField("🎲 Dice throw", "`roby dice pls`", true)
+		embed.addField("📢 Shout something", "`roby shout [text]`", true)
 		/* embed.addField("( ° ͜ʖ °)", "`roby lenny face pls`", true) */
 		embed.addField("👋 Hey", "`roby what's up`", true)
 		embed.addField("🏓 Ping", "`ping`", true)
@@ -166,6 +184,18 @@ client.on("message", async (msg) => {
 			msg.channel.send('woooo, it\'s shiny!')
 			msg.channel.send(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${Math.floor(Math.random() * 898) + 1}.png`)
 		}
+	}
+
+	// shout
+	if (command.startsWith(`${prefix}shout`)) {
+		let user = msg.author.username
+		let letters = command.substring(12, command.length)
+		let res = await funcs.shout(letters)
+		msg.channel.send(res)
+
+		setTimeout(() => {
+			msg.channel.send(`i don\'t like shouting, ` + user)
+		}, 300)
 	}
 
 	// dice
