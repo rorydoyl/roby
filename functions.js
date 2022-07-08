@@ -53,7 +53,7 @@ exports.getListeners = async () => {
 	const $ = await fetchData(www)
 	let listeners = "🔇 oio.radio is off mate!"
 	$(".streamstats").each(function (index) {
-		if (index === 1) listeners = parseInt($(this).text())
+		if (index === 2) listeners = parseInt($(this).text())
 	})
 	return listeners
 }
